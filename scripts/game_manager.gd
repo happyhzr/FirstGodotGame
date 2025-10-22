@@ -1,7 +1,8 @@
-extends Area2D
+extends Node
 
-@onready var game_manager: Node = %GameManager
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var score_label: Label = $ScoreLabel
+
+var score:int=0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,7 +13,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	pass
 
-
-func _on_body_entered(body: Node2D) -> void:
-	game_manager.add_point()
-	animation_player.play("pickup")
+func add_point():
+	score+=1
+	score_label.text="You collected "+str(score)+" coins."
